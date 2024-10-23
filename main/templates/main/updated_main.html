@@ -1,0 +1,24 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+    <h1>Updated ImaGenate</h1>
+    <h3>Enter a prompt to generate an Image</h3>
+
+    <form method="POST" autocomplete="off">
+        {% csrf_token %}
+        <input type="text" name="prompt" class="form-control" placeholder="Enter a prompt" name="user_input">
+        <button type="submit" class="btn btn-primary mt-3">ImaGenate</button>
+    </form>
+    <br>
+
+    {% if image_object %}
+        <div>
+            {{ image_object.prompt }}
+            <br>
+            <img src="{{ image_object.image.url }}" class="img-fluid" alt="{{ image_object.prompt}}">
+        </div>        
+        {% else %}
+        <p>Image should be displayed here</p>
+    {% endif %}
+
+{% endblock %}

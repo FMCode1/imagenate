@@ -6,7 +6,7 @@
 
     <form method="POST" autocomplete="off">
         {% csrf_token %}
-        <input type="text" name="prompt" class="form-control" placeholder="Enter a prompt" name="user_input">
+        <input type="text" name="user_input" class="form-control" placeholder="Enter a prompt" required>
         <button type="submit" class="btn btn-primary mt-3">ImaGenate</button>
     </form>
     <br>
@@ -15,10 +15,10 @@
         <div>
             {{ image_object.prompt }}
             <br>
-            <img src="{{ image_object.image.url }}" class="img-fluid" alt="{{ image_object.prompt}}">
+            <img src="{{ image_object.ai_image.url }}" class="img-fluid" alt="{{ image_object.prompt }}">
         </div>        
-        {% else %}
-        <p>Image should be displayed here</p>
+    {% else %}
+        <p>Image should be displayed here, but due to hard billing limit, does not show up</p>
     {% endif %}
 
 {% endblock %}
